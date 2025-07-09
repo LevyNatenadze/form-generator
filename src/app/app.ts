@@ -20,6 +20,7 @@ export class App {
   protected title = 'form-generator';
 
   testSchema: FormSchema = {
+    title: 'სქემა ტესტი',
     fields: [
       {
         name: 'firstName',

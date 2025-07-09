@@ -15,12 +15,15 @@ import { DynamicFieldComponent } from './dynamic-field.component';
   selector: 'app-dynamic-form',
   imports: [ReactiveFormsModule, DynamicFieldComponent],
   template: `
-    <form [formGroup]="form" (ngSubmit)="formSubmit()">
-      @for (field of schemaField; track field.name) {
-      <app-dynamic-field [form]="form" [field]="field"></app-dynamic-field>
-      }
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <div>
+      {{ schema()?.title || 'Dynamic Form' }}
+      <form [formGroup]="form" (ngSubmit)="formSubmit()">
+        @for (field of schemaField; track field.name) {
+        <app-dynamic-field [form]="form" [field]="field"></app-dynamic-field>
+        }
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
   `,
 })
 export class DynamicFormComponent<T = FormData> implements OnInit {
